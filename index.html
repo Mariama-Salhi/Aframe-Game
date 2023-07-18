@@ -3,17 +3,21 @@
   <head>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
-
+    <script src="./app.js"></script>
   </head>
   <body>
     <a-scene>
       
-      <a-entity id="left-controller-mtl" src="assets/oculus-touch-controller-left.mtl" oculus-touch-controls="hand: left"></a-entity>
-      <a-entity id="right-controller-mtl" src="assets/oculus-touch-controller-right.ble.mtl" oculus-touch-controls="hand: right"></a-entity>
-
+      <a-entity id="cameraRig">
+        <a-entity camera position="0 1.6 0">
+        </a-entity>
+        <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
+        <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
+      </a-entity>
       
-      <a-entity environment="preset: arches; groundColor: #445;"></a-entity>
-      <a-sky color="#lightblue"></a-sky>
+      
+    <a-entity environment="preset: arches; groundColor: #445;"></a-entity>
+    <a-sky color="#lightblue"></a-sky>
     
     </a-scene>
   </body>
