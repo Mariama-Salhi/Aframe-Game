@@ -8,12 +8,12 @@
   <body>
     <a-scene>
       
-      <a-entity oculus-touch-controls="hand: left"></a-entity>
-      <a-entity oculus-touch-controls="hand: right"></a-entity>
+      <a-entity id="left-controller-mtl" src="assets/oculus-touch-controller-left.mtl" oculus-touch-controls="hand: left"></a-entity>
+      <a-entity id="right-controller-mtl" src="assets/oculus-touch-controller-right.ble.mtl" oculus-touch-controls="hand: right"></a-entity>
 
       
-    <a-entity environment="preset: arches; groundColor: #445;"></a-entity>
-    <a-sky color="#lightblue"></a-sky>
+      <a-entity environment="preset: arches; groundColor: #445;"></a-entity>
+      <a-sky color="#lightblue"></a-sky>
     
     </a-scene>
   </body>
