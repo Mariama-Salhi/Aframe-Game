@@ -56,6 +56,8 @@
    });
  }
 
+
+
  // Función para actualizar el texto del contador
  function actualizarContador() {
    const contadorText = document.getElementById("contador");
@@ -67,3 +69,30 @@
 
  // Llamar a la función para comprobar colisiones y eliminar la esfera periódicamente
  setInterval(eliminarEsferaSiColisiona, 10);
+
+
+ let tiempoRestante = 60;
+let intervaloContador;
+
+// Función para iniciar el contador regresivo
+function iniciarContadorRegresivo() {
+  intervaloContador = setInterval(() => {
+    tiempoRestante--;
+    actualizarContadorTiempo();
+
+    if (tiempoRestante <= 0) {
+      clearInterval(intervaloContador);
+      // Aquí puedes agregar cualquier acción que desees realizar al finalizar el tiempo
+      alert("Game Over");
+    }
+  }, 1000); // El contador se actualizará cada segundo (1000 milisegundos)
+}
+
+// Función para actualizar el texto del contador regresivo en A-Frame
+function actualizarContadorTiempo() {
+  const contadorTiempo = document.getElementById("contadorTiempo");
+  contadorTiempo.setAttribute("text", "value", `Tiempo restante: ${tiempoRestante}`);
+}
+
+// Llamar a la función para iniciar el contador regresivo al cargar la página
+iniciarContadorRegresivo();
