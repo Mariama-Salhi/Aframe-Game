@@ -1,38 +1,73 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mi escena de A-Frame con tarjetas de coches</title>
+  <meta charset="UTF-8">
+  <title>Cochecitos</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.min.js"></script>
 </head>
 <body>
-  <a-scene>
-    <!-- Cámara para la vista del usuario -->
-    <a-entity camera look-controls wasd-controls></a-entity>
+  <a-scene cursor="rayOrigin: mouse">
+    <!-- Cámara -->
+    <a-entity id="camera" camera look-controls></a-entity>
 
-    <!-- Luces -->
-    <a-light type="ambient" color="#888"></a-light>
-    <a-light type="directional" color="#fff" intensity="0.8" castShadow="true" position="-2 4 -1"></a-light>
+    <!-- Suelo -->
+    <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#55DD63"></a-plane>
 
-    <!-- Piso -->
-    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#ccc"></a-plane>
+    <!-- Entorno -->
+    <a-sky
+        src="./assets/landscape.jpg"
+        scale="2 2 2"
+    ></a-sky>
 
-    <!-- Tarjetas de coches -->
-    <a-entity layout="type: line; margin: 1.5" position="-2 0 -4">
-
-      <!-- Tarjeta 1 -->
-      <a-entity id="car1" gltf-model="https://cdn.glitch.global/cdf96ad7-7c21-4738-8eaa-e770dd412f63/cartoon%20banana%20car.glb?v=1690045751654" scale="0.010 0.010 0.010" scale="0.010 0.010 0.010" position="-2 0 -5" rotation="0 180 0"></a-entity>
-
-      <!-- Tarjeta 2 -->
-      <a-entity id="car1" gltf-model="https://cdn.glitch.global/45ba4542-423b-4dec-aee3-a9a450e6850e/80s%20Car.glb?v=1690118684205" position="0 0 0" rotation="0 180 0" scale="0.010 0.010 0.010"></a-entity>
-
-      <!-- Tarjeta 3 -->
-      <a-entity class="car-card" gltf-model="url(models/coche3.glb)" scale="0.05 0.05 0.05" rotation="0 180 0"></a-entity>
-
+    <!-- Esferas flotantes -->
+    <a-entity id="esferas">
+        <a-sphere class="eliminar-esfera" position="5 -3 -16" radius="0.5" color="#FF0000" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 2000; loop: true;"></a-sphere>
+        <a-sphere class="eliminar-esfera" position="-7 -3 -20" radius="0.4" color="#00FF00" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 1800; loop: true;"></a-sphere>
+        <a-sphere class="eliminar-esfera" position="3 -3 -24" radius="0.6" color="#0000FF" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 2200; loop: true;"></a-sphere>
+        <a-sphere class="eliminar-esfera" position="-1 -3 -28" radius="0.7" color="#FFFF00" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 2500; loop: true;"></a-sphere>
+        <!-- Puedes agregar más esferas si lo deseas -->
     </a-entity>
 
-  </a-scene>
+      <!-- Avatar -->
+      <a-entity gltf-model="./models/my-avatar.glb" scale="0.10 0.10 0.10" position="1 -1 -5" rotation="0 180 0"></a-entity>
+
+
+    <!-- Vehículo -->
+    <a-entity id="car" gltf-model="https://cdn.glitch.global/cdf96ad7-7c21-4738-8eaa-e770dd412f63/cartoon%20banana%20car.glb?v=1690045751654" scale="0.010 0.010 0.010" position="0 -3 -5" rotation="0 180 0" keyboard-controls></a-entity>
+
+    <!-- Componente para que la cámara siga al coche -->
+    <a-entity camera look-at="#car"></a-entity>
+
+    <!-- Contador -->
+    <a-text id="contador" position="0 3 -5" value="0" color="#000000" align="center" scale="3 3 3"></a-text>
+    <a-text id="contadorTiempo" position="0 3.5 -5" value="0" color="#000000" align="center" scale="3 3 3"></a-text>
+
+
+
+    <!---------------------------- SIN gafas de RV ---------------------------->
+    <!-- <a-entity id="cameraRig">
+          <a-entity camera position="0 1.6 0">
+              <a-text value="debug" position="0 0 -3"></a-text>
+          </a-entity>
+          <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
+          <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
+    </a-entity> -->
+
+
+    <!--------------------------- CON gafas de RV --------------------------------->
+  
+      </a-entity>
+        <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
+        <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
+      </a-entity>
+
+
+    </a-scene>
+
+   <!-- Suelo (terreno) como modelo 3D -->
+   <a-entity gltf-model="url_del_modelo_3D.gltf" scale="1 1 1" position="0 0 0"></a-entity>
+
+  <script src="script.js"></script>
 </body>
 </html>
