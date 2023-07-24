@@ -3,7 +3,7 @@
  const esferas = document.querySelectorAll(".eliminar-esfera");
 
  // Variables para el movimiento del vehículo
- const moveSpeed = 0.5;
+ const moveSpeed = 1;
  const rotationSpeed = 5;
  const jumpStrength = 1.5; // Ajusta la fuerza del salto según tu preferencia
 
