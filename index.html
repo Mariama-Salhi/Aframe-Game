@@ -1,33 +1,38 @@
+
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
-    <script src="/app.js"></script>
-  </head>
-  <body>
-    <a-scene>
-      
-    <a-entity environment="preset: arches; groundColor: #445;"></a-entity>
-    <a-sky color="#lightblue"></a-sky>
-    
-    <!---------------------------- SIN gafas de RV ---------------------------->
-    <!-- <a-entity id="cameraRig">
-          <a-entity camera position="0 1.6 0">
-              <a-text value="debug" position="0 0 -3"></a-text>
-          </a-entity>
-          <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
-          <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
-    </a-entity> -->
+<head>
+  <title>Mi escena de A-Frame con tarjetas de coches</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a-scene>
+    <!-- Cámara para la vista del usuario -->
+    <a-entity camera look-controls wasd-controls></a-entity>
 
+    <!-- Luces -->
+    <a-light type="ambient" color="#888"></a-light>
+    <a-light type="directional" color="#fff" intensity="0.8" castShadow="true" position="-2 4 -1"></a-light>
 
-    <!--------------------------- CON gafas de RV --------------------------------->
-  
-      </a-entity>
-        <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
-        <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
-      </a-entity>
-  
+    <!-- Piso -->
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#ccc"></a-plane>
 
-  </body>
+    <!-- Tarjetas de coches -->
+    <a-entity layout="type: line; margin: 1.5" position="-2 0 -4">
+
+      <!-- Tarjeta 1 -->
+      <a-entity id="car1" gltf-model="https://cdn.glitch.global/cdf96ad7-7c21-4738-8eaa-e770dd412f63/cartoon%20banana%20car.glb?v=1690045751654" scale="0.010 0.010 0.010" scale="0.010 0.010 0.010" position="-2 0 -5" rotation="0 180 0"></a-entity>
+
+      <!-- Tarjeta 2 -->
+      <a-entity id="car1" gltf-model="https://cdn.glitch.global/45ba4542-423b-4dec-aee3-a9a450e6850e/80s%20Car.glb?v=1690118684205" position="0 0 0" rotation="0 180 0" scale="0.010 0.010 0.010"></a-entity>
+
+      <!-- Tarjeta 3 -->
+      <a-entity class="car-card" gltf-model="url(models/coche3.glb)" scale="0.05 0.05 0.05" rotation="0 180 0"></a-entity>
+
+    </a-entity>
+
+  </a-scene>
+</body>
 </html>
