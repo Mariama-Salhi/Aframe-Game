@@ -9,7 +9,7 @@
 <body>
   <a-scene cursor="rayOrigin: mouse">
     <!-- Cámara -->
-    <a-entity id="camera" camera look-controls></a-entity>
+    <!-- <a-entity id="camera" camera look-controls></a-entity> -->
 
     <!-- Suelo -->
     <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#55DD63"></a-plane>
@@ -34,7 +34,19 @@
 
 
     <!-- Vehículo -->
-    <a-entity id="car" gltf-model="https://cdn.glitch.global/cdf96ad7-7c21-4738-8eaa-e770dd412f63/cartoon%20banana%20car.glb?v=1690045751654" scale="0.010 0.010 0.010" position="0 -3 -5" rotation="0 180 0" keyboard-controls></a-entity>
+    
+      <a-entity id="cameraRig">
+        <a-entity camera position="0 1.6 0">
+            <a-entity id="car" gltf-model="https://cdn.glitch.global/cdf96ad7-7c21-4738-8eaa-e770dd412f63/cartoon%20banana%20car.glb?v=1690045751654" 
+                  scale="0.010 0.010 0.010" 
+                  position="0 -3 -5" 
+                  rotation="0 180 0" 
+                  keyboard-controls></a-entity>
+            <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
+            <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
+        </a-entity>
+    </a-entity>
+    
 
     <!-- Componente para que la cámara siga al coche -->
     <a-entity camera look-at="#car"></a-entity>
