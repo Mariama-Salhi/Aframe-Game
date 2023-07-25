@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
   <head>
+    <meta charset="UTF-8">
+    <title>Cochecitos</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
     <script src="/app.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js%22%3E"></script>
-
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.min.js"></script>
+    <!--Oculus-->
+    <!--https://stackoverflow.com/questions/71131300/cant-move-camera-in-a-frame-with-oculus-quest-2-->
+    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
+    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls.js"></script>
+    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls-teleport.js"></script>
+    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls-transform.js"></script>
+    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls-vive.js"></script>
+    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls-wasd.js"></script>
+    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls-webxr.js"></script>
   </head>
+
   <body>
     <a-scene>
       
-    <a-entity environment="preset: arches; groundColor: #445;"></a-entity>
-    <a-sky color="#lightblue"></a-sky>
-=======
-<head>
-  <meta charset="UTF-8">
-  <title>Cochecitos</title>
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.min.js"></script>
-</head>
-<body>
   <a-scene cursor="rayOrigin: mouse">
     <!-- Cámara -->
     <!-- <a-entity id="camera" camera look-controls></a-entity> -->
@@ -48,15 +49,14 @@
 
 
     <!-- Vehículo -->
->>>>>>> 55a83d0010fb8602df727e823abc26830009749b
     
-      <a-entity id="cameraRig">
-        <a-entity camera position="0 1.6 0">
+    <a-entity id="cameraRig">
+        <a-entity camera position="0 -3 -5">
             <a-entity id="car" gltf-model="https://cdn.glitch.global/cdf96ad7-7c21-4738-8eaa-e770dd412f63/cartoon%20banana%20car.glb?v=1690045751654" 
                   scale="0.010 0.010 0.010" 
                   position="0 -3 -5" 
                   rotation="0 180 0" 
-                  keyboard-controls></a-entity>
+                  keyboard-controls oculus-touch-controls></a-entity>
             <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
             <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
         </a-entity>
@@ -88,13 +88,10 @@
         <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
         <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
       </a-entity>
-<<<<<<< HEAD
 
       <a-entity id="avatar" position="-1.20687 0.02362 -2.2852"  scale="1 1 1" scale="1 1 1" animation-mixer="action" play-all-model-animations modify-materials gltf-model="/assets/model.glb"></a-entity>
       <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js%22%3E"></script>
   
-=======
->>>>>>> 55a83d0010fb8602df727e823abc26830009749b
 
 
     </a-scene>
