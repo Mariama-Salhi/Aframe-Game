@@ -1,104 +1,106 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Cochecitos</title>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
-    <script src="/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js%22%3E"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.min.js"></script>
-    <!--Oculus-->
-    <!--https://stackoverflow.com/questions/71131300/cant-move-camera-in-a-frame-with-oculus-quest-2-->
-    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
-    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls.js"></script>
-    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls-teleport.js"></script>
-    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls-transform.js"></script>
-    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls-vive.js"></script>
-    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls-wasd.js"></script>
-    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-touch-controls-webxr.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.0/dist/aframe-environment-component.min.js"></script>
+    
+    <script src="app.js"></script>
+    
+    <!-- Para los personajes-->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="modify.js"></script>
+   
   </head>
-
   <body>
     <a-scene>
       
-  <a-scene cursor="rayOrigin: mouse">
-    <!-- Cámara -->
-    <!-- <a-entity id="camera" camera look-controls></a-entity> -->
-
-    <!-- Entorno -->
-    <a-sky
-        src="./assets/landscape.jpg"
-        scale="2 2 2"
-    ></a-sky>
-
-    <!-- Esferas flotantes -->
-    <a-entity id="esferas">
-        <a-sphere class="eliminar-esfera" position="5 -3 -16" radius="0.5" color="#FF0000" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 2000; loop: true;"></a-sphere>
-        <a-sphere class="eliminar-esfera" position="-7 -3 -20" radius="0.4" color="#00FF00" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 1800; loop: true;"></a-sphere>
-        <a-sphere class="eliminar-esfera" position="3 -3 -24" radius="0.6" color="#0000FF" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 2200; loop: true;"></a-sphere>
-        <a-sphere class="eliminar-esfera" position="-1 -3 -28" radius="0.7" color="#FFFF00" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 2500; loop: true;"></a-sphere>
-        <!-- Puedes agregar más esferas si lo deseas -->
-    </a-entity>
-
-      <!-- Avatar -->
-      <a-entity gltf-model="./models/my-avatar.glb" scale="0.10 0.10 0.10" position="1 -1 -5" rotation="0 180 0"></a-entity>
-
-
-    <!-- Vehículo -->
-    
-    <a-entity id="cameraRig">
-        <a-entity camera position="0 -3 -5">
-            <a-entity id="car" gltf-model="https://cdn.glitch.global/cdf96ad7-7c21-4738-8eaa-e770dd412f63/cartoon%20banana%20car.glb?v=1690045751654" 
-                  scale="0.010 0.010 0.010" 
-                  position="0 -3 -5" 
-                  rotation="0 180 0" 
-                  keyboard-controls oculus-touch-controls></a-entity>
-            <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
-            <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
-        </a-entity>
-    </a-entity>
-    
-
-    <!-- Componente para que la cámara siga al coche -->
-    <a-entity camera look-at="#car"></a-entity>
-
-    <!-- Contador -->
-    <a-text id="contador" position="0 3 -5" value="0" color="#000000" align="center" scale="3 3 3"></a-text>
-    <a-text id="contadorTiempo" position="0 3.5 -5" value="0" color="#000000" align="center" scale="3 3 3"></a-text>
-
-
-
-    <!---------------------------- SIN gafas de RV ---------------------------->
-    <!-- <a-entity id="cameraRig">
-          <a-entity camera position="0 1.6 0">
-              <a-text value="debug" position="0 0 -3"></a-text>
-          </a-entity>
-          <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
-          <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
-    </a-entity> -->
-
-
-    <!--------------------------- CON gafas de RV --------------------------------->
-  
-      </a-entity>
-        <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
-        <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
-      </a-entity>
-
-      <a-entity id="avatar" position="-1.20687 0.02362 -2.2852"  scale="1 1 1" scale="1 1 1" animation-mixer="action" play-all-model-animations modify-materials gltf-model="/assets/model.glb"></a-entity>
-      <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js%22%3E"></script>
-  
-      <a-assets>
-        <audio id="thunk" src="https://cdn.glitch.global/fbde764c-872f-40ef-b662-fbd57c1e95aa/458461__prometheus888__carengine.wav?v=1690273668460%22%3E"></audio>
+      <!-- Music -->
+        <a-assets>
+        <audio id="thunk" src="https://cdn.glitch.global/fbde764c-872f-40ef-b662-fbd57c1e95aa/458461__prometheus888__carengine.wav?v=1690273668460"></audio>
+        <audio id="bgmusic" src="https://cdn.glitch.global/fbde764c-872f-40ef-b662-fbd57c1e95aa/audio2.mp3?v=1690273808811"></audio>
       </a-assets>
+      <a-sound src="#bgmusic" autoplay="true" position="0 2 5" loop="true"></a-sound>
 
+      
+      <!-- Enviroment -->
+      <a-light type="ambient" color="white"></a-light> 
+      <!-- <a-entity environment = "preset: volcano"></a-entity> -->
+      <a-sky src="https://cdn.glitch.global/f5838137-a755-41c3-93d6-3d6efc38de4d/tech_noir__cyberpunk_programming_giant_classroom_%20(1).jpg?v=1690462093542"></a-sky>
+      
+      <a-entity 
+          id="plant" 
+          position="0 0 -10" 
+          rotation="0 150 0" 
+          scale="3 3 3" 
+          animation-mixer="action" 
+          play-all-model-animations 
+          modify-materials 
+          gltf-model="https://cdn.glitch.global/7661bbaa-5714-4029-aebe-259c386fc5d0/model%20(2).glb?v=1690453788144"
+          class="collidable"
+        ></a-entity>
+      
+      <a-entity 
+          id="plant" 
+          position="2 0 -5" 
+          rotation="0 150 0" 
+          scale="3 3 3"
+          animation-mixer="action" 
+          play-all-model-animations 
+          modify-materials 
+          gltf-model="https://cdn.glitch.global/7661bbaa-5714-4029-aebe-259c386fc5d0/model%20(2).glb?v=1690453788144"
+          class="collidable"
+        ></a-entity>
+      
+      <a-entity 
+          id="plant" 
+          position="4.4 0 -4" 
+          rotation="0 150 0" 
+          scale="3 3 3" 
+          animation-mixer="action" 
+          play-all-model-animations 
+          modify-materials 
+          gltf-model="https://cdn.glitch.global/7661bbaa-5714-4029-aebe-259c386fc5d0/model%20(2).glb?v=1690453788144"
+          class="collidable"
+        ></a-entity>
+      
+      
+      
+      
+      <a-entity>
+      <a-box id="box-a" position="-1 2.5 -3" color="red" class="collidable"></a-box>
+       
+        <a-sphere class="collidable" position="1 1 -8" radius="0.5" color="#FF0000" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 2000; loop: true;" ></a-sphere>
+        <a-sphere class="collidable" position="-1 1 -7" radius="0.4" color="#00FF00" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 1800; loop: true;"></a-sphere>
+        <a-sphere class="collidable" position="3 1 -24" radius="0.6" color="#0000FF" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 2200; loop: true;"></a-sphere>
+        <a-sphere class="collidable" position="-1 1 -28" radius="0.7" color="#yellow" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 2500; loop: true;"></a-sphere>
+        <a-sphere class="collidable" position="-5 1 -26" radius="0.7" color="black" animation="property: scale; from: 0.5 0.5 0.5; to: 1.5 1.5 1.5; dir: alternate; dur: 2500; loop: true;  "></a-sphere>
+       
+    </a-entity>
+ 
+      
+      
+    <a-entity camera look-controls wasd-controls="fly: true" position="0 1.6 0">
+      
+      
+      
+      
+      
+      
+      
+      <a-entity id="cameraRig">
+        <a-entity camera position="0 1.6 0">
+           <a-text id="counter" position="1 1 -3" color="white" align="center" value="60"></a-text>
+          <a-text id="message" position="-1 2 -3" color="white" align="center" value=""></a-text>
+        </a-entity>
+        <a-entity oculus-touch-controls="hand: left"
+                  collider-check raycaster="objects: .collidable; showLine: true"
+                  thumbstick-logging></a-entity>
+        <a-entity oculus-touch-controls="hand: right"
+                  collider-check raycaster="objects: .collidable; showLine: true"
+                  thumbstick-logging></a-entity>
+      </a-entity>
+      
 
     </a-scene>
-
-   <!-- Suelo (terreno) como modelo 3D -->
-   <a-entity gltf-model="url_del_modelo_3D.gltf" scale="1 1 1" position="0 0 0"></a-entity>
-
-  <script src="script.js"></script>
-</body>
+  </body>
 </html>
