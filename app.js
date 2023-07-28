@@ -81,7 +81,7 @@ AFRAME.registerComponent('collider-check', {
 
 // CODIGO DEL COUNTER
 
- let tiempoRestante = 60;
+let tiempoRestante = 60;
 let intervaloContador;
 
 // Función para iniciar el contador regresivo
@@ -92,10 +92,16 @@ function iniciarContadorRegresivo() {
 
     if (tiempoRestante <= 0) {
       clearInterval(intervaloContador);
-      // Aquí puedes agregar cualquier acción que desees realizar al finalizar el tiempo
-      alert("Game Over");
+      // Mostrar el mensaje "Game Over" cuando el tiempo llega a cero
+      mostrarGameOver();
     }
   }, 1000); // El contador se actualizará cada segundo (1000 milisegundos)
+}
+
+// Función para mostrar el mensaje "Game Over"
+function mostrarGameOver() {
+  const contadorTiempo = document.getElementById("contadorTiempo");
+  contadorTiempo.setAttribute("text", "value", "Game Over");
 }
 
 // Función para actualizar el texto del contador regresivo en A-Frame
@@ -108,4 +114,16 @@ function actualizarContadorTiempo() {
 iniciarContadorRegresivo();
 
 
-     
+
+
+
+
+// Función para mostrar el mensaje "Game Over" y reproducir el audio
+function mostrarGameOver() {
+  const contadorTiempo = document.getElementById("contadorTiempo");
+  contadorTiempo.setAttribute("text", "value", "Game Over");
+
+  // Reproducir el audio Game Over
+  const gameOverAudio = document.getElementById("gameOverAudio");
+  gameOverAudio.play();
+}
